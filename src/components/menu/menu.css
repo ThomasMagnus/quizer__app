@@ -1,0 +1,35 @@
+.menu__wrapper {
+    cursor: pointer;
+    width: 30px;
+    position: fixed;
+    top: 30px;
+    left: 50px;
+    transition: all 0.3s linear;
+}
+
+.menu__line {
+    width: 100%;
+    height: 2px;
+    background-color: #fff;
+    margin-top: 5px;
+    transition: all 0.3s linear;
+}
+
+.line:first-child {
+    transform: rotate(45deg) translateX(9px);
+    transition: all 0.3s linear;
+}
+
+.line:nth-child(2) {
+    opacity: 0;
+}
+
+.line:last-child {
+    transform: rotate(-45deg) translateX(9px);
+    transition: all 0.3s linear;
+}
+
+.active__burger {
+    left: 22%;
+    transition: all 0.3s linear;
+}

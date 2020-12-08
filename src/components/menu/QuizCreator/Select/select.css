@@ -1,0 +1,13 @@
+.form__select {
+    width: 200px;
+    height: 25px;
+    color: #000;
+}
+
+.form__option {
+    color: #000;
+}
+
+.select__title {
+    color: #000;
+}

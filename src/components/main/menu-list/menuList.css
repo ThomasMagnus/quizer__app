@@ -1,0 +1,40 @@
+.menu__list {
+    background: linear-gradient(90deg, #5041b2 0%, #7969e6 100%);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    font-size: 25px;
+    width: 20%;
+    height: 100vh;
+    transition: all 0.3s linear;
+}
+
+.menu__item {
+    cursor: pointer;
+}
+
+.active__menu {
+    transform: translateX(-100%);
+    transition: all 0.3s linear;
+}
+
+.item__link {
+    text-decoration: none;
+    transition: all 0.3s linear;
+    position: relative;
+}
+
+.item__link:before {
+    content: '';
+    border-bottom: 2px solid #fff;
+    background-color: #fff;
+    position: absolute;
+    top: 30px;
+    width: 0;
+    transition: all 0.3s linear;
+}
+
+.item__link:hover:before {
+    width: 100%;
+}

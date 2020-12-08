@@ -1,0 +1,21 @@
+.main__item {
+    border-radius: 20px;
+    border: 1px solid #fff;
+    margin: 10px 0 0 20px;
+    font-size: 18px;
+    cursor: pointer;
+    padding: 10px;
+    transition: all 0.3s linear;
+}
+
+.main__item:hover {
+    background: rgba(255, 255, 255, .3);
+}
+
+.main__item.success {
+    background-color: rgba(161, 240, 67, .7);
+}
+
+.main__item.fail {
+    background-color: rgba(240, 81, 108, .7);
+}
