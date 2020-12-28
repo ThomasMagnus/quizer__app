@@ -14,16 +14,6 @@ class Quiz extends Component {
         quizArr: []
     }
 
-    // componentDidMount() {
-    //     this.quizer = []
-    //     this.props.quiz.quiz.forEach(item => {
-    //         if (item.quizId === window.location.pathname.split('/')[2]) {
-    //             console.log(item)
-    //             this.quizer.push(item)
-    //         }
-    //     })
-    // }
-
     getQuizes = () => {
         this.quizer = []
         this.props.quiz.quiz.forEach(item => {

@@ -1,7 +1,8 @@
 import React from "react";
 import {Link} from "react-router-dom";
 import './quizList.css'
-import getData from "../sevices/getData";
+import {connect} from 'react-redux'
+import { fetchQuizes } from "../../redux/actions/quiz";
 
 class QuizList extends React.Component{
     constructor(props) {
@@ -9,27 +10,13 @@ class QuizList extends React.Component{
         this.url = 'https://quizapp-667c6.firebaseio.com/quizApp.json'
     }
 
-    state = {
-        quizArr: [],
-        loader: false
-    }
-
     async componentDidMount() {
-        await getData(this.url)
-            .then(response => {
-                const quizes = []
-                Object.keys(response).forEach(item => {
-                    quizes.push(item)
-                })
-                this.setState({quizArr: quizes})
-                this.setState({loader: true})
-            })
-            .catch(error => console.log(error))
+        this.props.fetchQuizes()
     }
 
     renderQuizList() {
         return (
-            this.state.quizArr.map((item, i) => {
+            this.props.quizArr.map((item, i) => {
                 return (
                     <li className="quiz__item" key={item}>
                         <Link className="quiz__link" to={"/quiz/" + item}>Тест №{i + 1}</Link>
@@ -42,9 +29,9 @@ class QuizList extends React.Component{
     render() {
         return (
             <div className="list__container">
-                {!this.state.loader ?
+                {!this.props.loader ?
                     <img src="./img/loader.svg" alt="loader"/> :
-                    this.state.quizArr.length === 0 ? <h1>Пока нет ни одного теста</h1>
+                    this.props.quizArr.length === 0 ? <h1>Пока нет ни одного теста</h1>
                     : <ul className="quiz__list">
                         {this.renderQuizList()}
                       </ul>}
@@ -53,4 +40,17 @@ class QuizList extends React.Component{
     }
 }
 
-export default QuizList
+const mapStateToProps = state => {
+    return {
+        quizArr: state.quiz.quizArr,
+        loader: state.quiz.loader
+    }
+}
+
+const mapDispatchToProps = dispatch => {
+    return {
+        fetchQuizes: () => dispatch(fetchQuizes())
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(QuizList)
